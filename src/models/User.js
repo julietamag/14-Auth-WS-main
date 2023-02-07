@@ -37,8 +37,8 @@ User.prototype.createHash = function(plainPassword, salt){
 }
 
 User.prototype.validatePassword = function(password) {
-    return bcrypt
-      .hash(password, this.salt)
+    return this
+      .createHash(password, this.salt)
       .then((hash) => hash === this.password)
   }
 
